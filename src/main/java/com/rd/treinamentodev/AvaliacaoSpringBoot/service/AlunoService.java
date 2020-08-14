@@ -16,15 +16,13 @@ public class AlunoService {
     private AlunoRepository alunoRepository;
 
 
-    public ResponseEntity gravar(AlunoDTO alunoDTO){
+    public ResponseEntity gravar(AlunoDTO alunoDTO) throws Exception {
         AlunoEntity entity = new AlunoEntity();
         entity.setNomeAluno(alunoDTO.getNome());
         entity.setCpf(alunoDTO.getCpf());
 
-        //TODO validar se o CPF existe no banco antes de existir, caso exista retornar mensagem de erro
-
-
-
+        if (alunoRepository.findByCpf(alunoDTO.getCpf()).size() > 0)
+            throw new Exception("CPF já cadastrado");
 
         entity = alunoRepository.save(entity);
 

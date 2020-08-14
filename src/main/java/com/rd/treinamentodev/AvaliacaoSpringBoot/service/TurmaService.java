@@ -32,11 +32,14 @@ public class TurmaService {
         List<TurmaEntity> listEntity = turmaRepository.findAll();
         List<TurmaDTO> listDTO = new ArrayList<>();
 
-        //TODO implementar a conversão da lista de objetos de TurmaEntity para TurmaDTO e retornar a listDTO preenchida
+        for(TurmaEntity turma : listEntity){
+            TurmaDTO dto = new TurmaDTO();
 
+            dto.setCurso(turma.getCurso());
+            dto.setAlunos(turma.getAlunos());
 
+            return listDTO;
 
-
-        return listDTO;
     }
+
 }

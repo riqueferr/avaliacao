@@ -8,4 +8,5 @@ public class AlunoDTO {
     private String nome;
 
     private String cpf;
+
 }
